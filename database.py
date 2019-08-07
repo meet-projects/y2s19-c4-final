@@ -15,6 +15,10 @@ def add_user(name,secret_word):
 	session.add(user)
 	session.commit()
 
+def add_item(item_id,user_id):
+	cart_item = CartItem(item_id=item_id , user_id=user_id)
+	session.add(cart_item)
+	session.commit()
 
 
 def get_user(username):
@@ -27,7 +31,11 @@ def delet_all_users():
 
 
 def get_items(user_id):
-	return session.query(CartItem).filter_by(user_id = user_id).all()
+	print(CartItem)
+	if len(session.query(CartItem).filter_by(user_id = user_id).all()) == 0:
+		return "Hello"
+	else:
+		return session.query(CartItem).filter_by(user_id = user_id).all()
 
 def get_item(item_id):
 	return session.query(Item).filter_by(id = item_id).first()

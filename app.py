@@ -25,6 +25,7 @@ def product_page():
 
 @app.route('/cart')
 def cart_page():
+
 	items_dic = get_items(login_session['user_id'])
 	print(login_session['user_id'],"user id",items_dic)
 	items = []
@@ -74,6 +75,12 @@ def checkout_page():
 @app.route('/category')
 def category_page():
 	return render_template("category.html")
+
+@app.route('/add/<int:item_id>', methods=['POST',"GET"])
+def add(item_id):
+	user_id =login_session['user_id']
+	add_item(item_id,user_id)
+	return home()
 
 
 

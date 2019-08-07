@@ -106,7 +106,7 @@
 				<!-- Phone -->
 				<div class="header_phone d-flex flex-row align-items-center justify-content-start">
 					{%if session['logged_in'] %}
-					{{session["name"]}}
+					<a href="/logout"> {{session["name"]}}</a>
 					{%else%}
 					<div  style="padding-left:1px;"><a href="/login">Log in</a> </div>
 					{%endif%}
@@ -771,7 +771,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</div>
 		
 </div>
+<div class="container">
+<button class="logout" style="background-color: blue;" type="button" class="signupbtn" >signup</button>
+</div>
+<script>
+	
 
+	// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+$(".logout").click(function () {
+window.location = "/logout";
+})
+</script>
 <script src="/static/js/jquery-3.2.1.min.js"></script>
 <script src="/static/bootstrap-4.1.2/popper.js"></script>
 <script src="/static/bootstrap-4.1.2/bootstrap.min.js"></script>

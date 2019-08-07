@@ -82,6 +82,12 @@ def add(item_id):
 	add_item(item_id,user_id)
 	return home()
 
+@app.route("/logout")
+def logout():
+	login_session['name'] = None
+	login_session['user_id'] = None
+	login_session['logged_in'] = False 
+	return home()
 
 
 # Running the Flask app

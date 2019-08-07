@@ -17,7 +17,6 @@ app.config['SECRET_KEY'] = 'you-will-never-guess'
 # App routing code here
 @app.route('/')
 def home():
-	print(login_session)
 	return render_template('index.html')
 
 @app.route('/product')
@@ -26,6 +25,7 @@ def product_page():
 
 @app.route('/cart')
 def cart_page():
+
 	items_dic = get_items(login_session['user_id'])
 	print(login_session['user_id'],"user id",items_dic)
 	items = []
@@ -52,7 +52,7 @@ def login():
 			login_session['name'] = user.username
 			login_session['user_id'] = user.id
 			login_session['logged_in'] = True
-	 		return home()
+			return home()
 	else:
 		return render_template('login.html')
 
@@ -92,4 +92,4 @@ def logout():
 
 # Running the Flask app
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)
